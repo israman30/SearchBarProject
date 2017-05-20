@@ -12,6 +12,7 @@
 		8D0AFF7E1ECE6696000D37D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D0AFF7D1ECE6696000D37D2 /* Assets.xcassets */; };
 		8D0AFF811ECE6696000D37D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0AFF7F1ECE6696000D37D2 /* LaunchScreen.storyboard */; };
 		8D0AFF891ECE694C000D37D2 /* SearchBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */; };
+		8D18A9571ED0D6290015FF25 /* SeconSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8D0AFF801ECE6696000D37D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D0AFF821ECE6696000D37D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarTableViewController.swift; sourceTree = "<group>"; };
+		8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeconSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				8D0AFF761ECE6696000D37D2 /* AppDelegate.swift */,
 				8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */,
+				8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */,
 				8D0AFF7A1ECE6696000D37D2 /* Main.storyboard */,
 				8D0AFF7D1ECE6696000D37D2 /* Assets.xcassets */,
 				8D0AFF7F1ECE6696000D37D2 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				8D0AFF771ECE6696000D37D2 /* AppDelegate.swift in Sources */,
 				8D0AFF891ECE694C000D37D2 /* SearchBarTableViewController.swift in Sources */,
+				8D18A9571ED0D6290015FF25 /* SeconSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +306,7 @@
 				8D0AFF871ECE6696000D37D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -32,11 +32,69 @@
                             <outlet property="delegate" destination="1ua-aA-YqP" id="2xe-GQ-s1K"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="hY7-A4-V6m"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="hY7-A4-V6m">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="1aZ-lJ-jmr">
+                            <connections>
+                                <segue destination="KOd-lF-VrV" kind="push" id="HMl-my-iel"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IvP-TG-e8k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="313" y="215"/>
+        </scene>
+        <!--Secon Search View Controller-->
+        <scene sceneID="Mvq-sk-yhY">
+            <objects>
+                <viewController id="KOd-lF-VrV" customClass="SeconSearchViewController" customModule="SearchBarSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a0d-9w-qI2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ygo-uq-eY8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mlF-cD-GQb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Jie-Go-WxF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KIg-CR-Ljz">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8Bi-2E-4DK">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Bi-2E-4DK" id="4CT-C3-AqZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KIg-CR-Ljz" firstAttribute="top" secondItem="Jie-Go-WxF" secondAttribute="bottom" id="Mxl-1b-wzV"/>
+                            <constraint firstItem="KIg-CR-Ljz" firstAttribute="leading" secondItem="mlF-cD-GQb" secondAttribute="leading" id="ec7-ZB-Llw"/>
+                            <constraint firstAttribute="trailing" secondItem="KIg-CR-Ljz" secondAttribute="trailing" id="hq2-RR-R4K"/>
+                            <constraint firstItem="Ygo-uq-eY8" firstAttribute="top" secondItem="KIg-CR-Ljz" secondAttribute="bottom" id="jaU-4q-Ab2"/>
+                            <constraint firstItem="Jie-Go-WxF" firstAttribute="leading" secondItem="mlF-cD-GQb" secondAttribute="leading" id="oMv-gF-Afd"/>
+                            <constraint firstItem="Jie-Go-WxF" firstAttribute="top" secondItem="a0d-9w-qI2" secondAttribute="bottom" id="rpl-pS-MkW"/>
+                            <constraint firstAttribute="trailing" secondItem="Jie-Go-WxF" secondAttribute="trailing" id="vKu-ul-xpq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mcQ-k2-ler"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Jie-Go-WxF" id="rRb-gy-UOE"/>
+                        <outlet property="tableView" destination="KIg-CR-Ljz" id="GKL-r6-hsJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dB0-Ab-xQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="215"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vOB-0J-84C">
