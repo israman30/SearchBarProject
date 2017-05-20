@@ -12,7 +12,16 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
     
     let searchBar = UISearchBar()
     
-    let itemsOnTableView = ["Barcelona", "Real Madrid", "Manchester United", "Liverpool", "Bayer Munich", "Werde Bremme", "AC Milan", "Inter", "Benfica", "Sportin de Lisboa", "Boca Jr", "River Plate", "Flamengo", "Coritians", "U de Chile", "Colo Colo", "Barcelona", "Emelec", "Ateltico Medellin", "America de Cali", "Univeristario de Deporte", "Alianza Lima", "Cerro Portenio", "Olimpia", "Oriente Petrolero", "Bolivar", "Nacional", "Peniarol"]
+    let itemsOnTableView = [
+        "Barcelona", "Real Madrid", "Manchester United",
+        "Liverpool", "Bayer Munich", "Werde Bremme", "AC Milan",
+        "Inter", "Benfica", "Sportin de Lisboa", "Boca Jr",
+        "River Plate", "Flamengo", "Coritians", "U de Chile",
+        "Colo Colo", "Barcelona", "Emelec", "Ateltico Medellin",
+        "America de Cali", "Univeristario de Deporte", "Alianza Lima",
+        "Cerro Portenio", "Olimpia", "Oriente Petrolero", "Bolivar",
+        "Nacional", "Peniarol"
+    ]
     
     var filterArray = [String]()
     var showResults = false

@@ -14,7 +14,16 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var tableData = ["Ecuador", "USA", "Mexico", "Canada", "Colombia", "Venezuela", "Peru", "Brasil", "Chile", "Bolivia", "Argentina", "Uruguay", "Paraguay", "Guatemala", "El Salvador", "Honduras", "Nicargua", "Panama", "Costa Rica", "Cuba", "Rep Dominicana", "Granada", "Haiti", "Bahamas", "Trinidad Tobago"]
+    var tableData = [
+            "Ecuador", "USA", "Mexico",
+            "Canada", "Colombia", "Venezuela",
+            "Peru", "Brasil", "Chile", "Bolivia",
+            "Argentina", "Uruguay", "Paraguay",
+            "Guatemala", "El Salvador", "Honduras",
+            "Nicargua", "Panama", "Costa Rica",
+            "Cuba", "Rep Dominicana", "Granada",
+            "Haiti", "Bahamas", "Trinidad Tobago"
+    ]
     
     var isSearching = false
     
