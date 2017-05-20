@@ -30,6 +30,9 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.placeholder = "Enter Text Here"
         searchBar.delegate =  self
         
+        searchBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.barTintColor = UIColor.yellow
+        
         self.navigationItem.titleView = searchBar
     }
 
