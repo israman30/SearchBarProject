@@ -59,7 +59,6 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
         if showResults {
             return filterArray.count
         } else {
-        
             return itemsOnTableView.count
         }
     }

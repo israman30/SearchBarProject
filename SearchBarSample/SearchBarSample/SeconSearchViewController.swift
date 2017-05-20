@@ -32,6 +32,7 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
 
     }
 
+    // MARK - Delegates & Data Source fuctions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,8 +50,8 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
         
         if isSearching {
             cell?.textLabel?.text = filterData[indexPath.row]
+            return cell!
         } else {
-        
             cell?.textLabel?.text = tableData[indexPath.row]
         }
             return cell!
