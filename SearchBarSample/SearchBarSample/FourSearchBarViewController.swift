@@ -27,6 +27,7 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
+    // MARK: - Search Bar Generator function
     func searchBarGenerate(){
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 70))
         searchBar.showsScopeBar = true
@@ -45,7 +46,6 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
         if searchText.isEmpty {
             tableView.reloadData()
         } else {
-        
             filteringTableView(index: searchBar.selectedScopeButtonIndex, text: searchText)
             tableView.reloadData()
         }
