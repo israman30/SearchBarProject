@@ -12,8 +12,6 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tableView: UITableView!
     
-    var teams = [Model]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
