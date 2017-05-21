@@ -43,6 +43,8 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.reloadData()
         
     }
     
@@ -55,12 +57,9 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ItemTableViewCell
-       
-        let array = filterArray[indexPath.row]
-        cell.titleLbl.text = array.name
-        cell.subTitleLbl.text = array.kind
-        
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = filterArray[indexPath.row].name
+        cell.detailTextLabel?.text = filterArray[indexPath.row].kind
         return cell
     }
     
@@ -69,9 +68,7 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
             filterArray = animals
             tableView.reloadData()
         } else {
-            filterArray = animals.filter({ (species) -> Bool in
-                return species.name.lowercased().contains(searchController.searchBar.text!.lowercased())
-            })
+            filterArray = animals.filter({ $0.name.lowercased().contains(searchController.searchBar.text!.lowercased())})
         }
         tableView.reloadData()
     }
