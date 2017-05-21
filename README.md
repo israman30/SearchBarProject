@@ -27,7 +27,7 @@
 ***************
 ### Filtering Event
 ![Alt Image Text](images/SSthree1.png)
-## Search Bar with Scoope Buttons
+## Search Bar with Scoop Buttons
 ![Alt Image Text](images/SSFour.png)
 ***************
 ***************
