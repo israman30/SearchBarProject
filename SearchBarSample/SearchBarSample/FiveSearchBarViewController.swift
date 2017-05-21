@@ -60,6 +60,7 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = filterArray[indexPath.row].name
         cell.detailTextLabel?.text = filterArray[indexPath.row].kind
+        
         return cell
     }
     
