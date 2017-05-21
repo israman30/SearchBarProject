@@ -41,6 +41,14 @@ var teams: [Teams] = [
           photoEquipo: UIImage(named: "flamengo")),
     Teams(equipo: "Sao Paulo",
           descriptionTeam: "As for international titles, São Paulo is the most successful team from Brazil, with 12 international titles. It is also one of the most successful South American clubs in terms of overall titles, having won 21 state titles, six Brasileirão titles, three Copa Libertadores titles, one Copa Sudamericana, one Supercopa Libertadores, one Copa CONMEBOL, one Copa Masters CONMEBOL, two Recopa Sudamericanas, two Intercontinental Cups and one FIFA Club World Cup.",
-          photoEquipo: UIImage(named: "saoPaulo"))
+          photoEquipo: UIImage(named: "saoPaulo")),
+    Teams(equipo: "Atletico Nacional",
+          descriptionTeam: "Club Atlético Nacional S. A., also known as Atlético Nacional, is a Colombian professional football team based in Medellín. The club is one of only three teams to have played in every first division tournament in the country's history, the other two teams being Millonarios and Santa Fe.",
+          photoEquipo: UIImage(named: "atlNac")),
+    Teams(equipo: "America de Cali",
+          descriptionTeam: "Sociedad Anónima Deportiva América S. A., best known as América de Cali, is a Colombian football team based in Cali. In 2017, the team will play in the Categoría Primera A after having been promoted. They play their home games at the Olímpico Pascual Guerrero stadium.",
+          photoEquipo: UIImage(named: "americaCali")),
+    Teams(equipo: "U de Chile", descriptionTeam: "The club was founded on May 24, 1927. Universidad de Chile is one of the most successful and popular football clubs in Chile, having won the league title 18 times.[2] In the last 10 years, the team has been crowned champion six times, including their undefeated run to the 2011 Copa Sudamericana title. The team has been throughout its history associated with the blue colour, also present on the logo, which was officially adopted in 1943. The club rivalries are with Colo-Colo and Universidad Católica, with whom they regularly contest the Santiago derbies known as Clásicos.", photoEquipo: UIImage(named: "udeChile")),
+    Teams(equipo: "Colo Colo", descriptionTeam: "Club Social y Deportivo Colo-Colo (Spanish pronunciation: [colo colo]) is a Chilean football club based in Macul, Santiago. Founded in 1925, they play in the Chilean Primera División, from which they have never been relegated.[1] The team plays its home games at Estadio Monumental David Arellano since 1989.[2] Colo-Colo is regarded as the most successful club of Chilean football.", photoEquipo: UIImage(named: "colocolo"))
     
 ]
