@@ -14,6 +14,9 @@
 		8D0AFF891ECE694C000D37D2 /* SearchBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */; };
 		8D18A9571ED0D6290015FF25 /* SeconSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */; };
 		8D18A9591ED0F5A20015FF25 /* ThirdSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18A9581ED0F5A20015FF25 /* ThirdSearchBarViewController.swift */; };
+		8D18A95B1ED12A410015FF25 /* FourSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18A95A1ED12A410015FF25 /* FourSearchBarViewController.swift */; };
+		8D18A95F1ED12C460015FF25 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18A95E1ED12C460015FF25 /* DataTableViewCell.swift */; };
+		8D18A9611ED12F750015FF25 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18A9601ED12F750015FF25 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarTableViewController.swift; sourceTree = "<group>"; };
 		8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeconSearchViewController.swift; sourceTree = "<group>"; };
 		8D18A9581ED0F5A20015FF25 /* ThirdSearchBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdSearchBarViewController.swift; sourceTree = "<group>"; };
+		8D18A95A1ED12A410015FF25 /* FourSearchBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourSearchBarViewController.swift; sourceTree = "<group>"; };
+		8D18A95E1ED12C460015FF25 /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
+		8D18A9601ED12F750015FF25 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,15 +65,34 @@
 			isa = PBXGroup;
 			children = (
 				8D0AFF761ECE6696000D37D2 /* AppDelegate.swift */,
-				8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */,
-				8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */,
-				8D18A9581ED0F5A20015FF25 /* ThirdSearchBarViewController.swift */,
+				8D18A95C1ED12C050015FF25 /* SearchVC */,
 				8D0AFF7A1ECE6696000D37D2 /* Main.storyboard */,
 				8D0AFF7D1ECE6696000D37D2 /* Assets.xcassets */,
 				8D0AFF7F1ECE6696000D37D2 /* LaunchScreen.storyboard */,
 				8D0AFF821ECE6696000D37D2 /* Info.plist */,
 			);
 			path = SearchBarSample;
+			sourceTree = "<group>";
+		};
+		8D18A95C1ED12C050015FF25 /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				8D0AFF881ECE694C000D37D2 /* SearchBarTableViewController.swift */,
+				8D18A9561ED0D6290015FF25 /* SeconSearchViewController.swift */,
+				8D18A9581ED0F5A20015FF25 /* ThirdSearchBarViewController.swift */,
+				8D18A95D1ED12C220015FF25 /* FourVC&Cell */,
+			);
+			name = SearchVC;
+			sourceTree = "<group>";
+		};
+		8D18A95D1ED12C220015FF25 /* FourVC&Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8D18A95A1ED12A410015FF25 /* FourSearchBarViewController.swift */,
+				8D18A95E1ED12C460015FF25 /* DataTableViewCell.swift */,
+				8D18A9601ED12F750015FF25 /* Model.swift */,
+			);
+			name = "FourVC&Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +168,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D18A9611ED12F750015FF25 /* Model.swift in Sources */,
 				8D0AFF771ECE6696000D37D2 /* AppDelegate.swift in Sources */,
+				8D18A95F1ED12C460015FF25 /* DataTableViewCell.swift in Sources */,
 				8D0AFF891ECE694C000D37D2 /* SearchBarTableViewController.swift in Sources */,
 				8D18A9591ED0F5A20015FF25 /* ThirdSearchBarViewController.swift in Sources */,
 				8D18A9571ED0D6290015FF25 /* SeconSearchViewController.swift in Sources */,
+				8D18A95B1ED12A410015FF25 /* FourSearchBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
