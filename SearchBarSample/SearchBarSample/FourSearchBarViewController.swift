@@ -58,7 +58,7 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
                 return names.equipo.lowercased().contains(text.lowercased())
             })
             tableView.reloadData()
-        case selectScoope.name.rawValue:
+        case selectScoope.descriptionTeam.rawValue:
             teams = teams.filter({ (description:Teams) -> Bool in
                 return description.descriptionTeam.lowercased().contains(text.lowercased())
             })
