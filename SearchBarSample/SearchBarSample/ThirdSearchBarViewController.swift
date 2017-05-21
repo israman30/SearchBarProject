@@ -46,6 +46,7 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
 
     }
     
+    // MARK - Delegates and Data Source
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -71,6 +72,7 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    // MARK: - Filter function
     func filterContentSearch(_ search: String){
         filterArray = cities.filter({ (city: String) -> Bool in
             return (city.lowercased().range(of: search.lowercased()) != nil)
@@ -78,6 +80,7 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
         tableView.reloadData()
     }
     
+    // MARK - Update result on filter
     func updateSearchResults(for searchController: UISearchController) {
         filterContentSearch(searchController.searchBar.text!)
         tableView.reloadData()
