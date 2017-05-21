@@ -39,6 +39,7 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.barTintColor = UIColor.red
     
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
