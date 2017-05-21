@@ -25,11 +25,16 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return teams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DataTableViewCell
+        
+        let team = teams[indexPath.row]
+        cell.equipoLbl.text = team.equipo
+        cell.descriptionTeamLbl.text = team.descriptionTeam
+        cell.imagePic.image = team.photoEquipo
         return cell
     }
   
