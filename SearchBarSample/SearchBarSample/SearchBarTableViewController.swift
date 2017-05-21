@@ -24,6 +24,7 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
     ]
     
     var filterArray = [String]()
+    
     var showResults = false
 
     override func viewDidLoad() {
