@@ -31,6 +31,8 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 70))
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["Name", "Description"]
+        searchBar.tintColor = UIColor.white
+        searchBar.barTintColor = UIColor.darkGray
         searchBar.selectedScopeButtonIndex = 0
         
         searchBar.delegate = self
