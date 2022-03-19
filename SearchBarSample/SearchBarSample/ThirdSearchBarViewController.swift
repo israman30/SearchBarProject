@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchResultsUpdating {
+class ThirdSearchBarViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var filterArray = [String]()
+    private var filterArray = [String]()
     
-    var searchController = UISearchController(searchResultsController: nil)
+    private var searchController = UISearchController(searchResultsController: nil)
     
-    var cities = [
+    private var cities = [
         "Guayaquil", "Quito",
         "New York", "San Francisco",
         "Rome", "Barcelona", "Madrid",
@@ -38,12 +38,15 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
         tableView.dataSource = self
         
         searchController.searchResultsUpdater = self
-        searchController.searchBar.barTintColor = UIColor.red
+        searchController.searchBar.barTintColor = .red
     
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
 
     }
+}
+
+extension ThirdSearchBarViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK - Delegates and Data Source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,7 +54,6 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if searchController.isActive {
             return filterArray.count
         } else {
@@ -60,16 +62,19 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { fatalError("Cell doesn't exist") }
         
         if searchController.isActive {
-            cell?.textLabel?.text = filterArray[indexPath.row]
-            return cell!
+            cell.textLabel?.text = filterArray[indexPath.row]
+            return cell
         } else {
-            cell?.textLabel?.text = cities[indexPath.row]
-            return cell!
+            cell.textLabel?.text = cities[indexPath.row]
+            return cell
         }
     }
+}
+
+extension ThirdSearchBarViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     // MARK: - Filter function
     func filterContentSearch(_ search: String){
@@ -84,4 +89,5 @@ class ThirdSearchBarViewController: UIViewController, UITableViewDelegate, UITab
         filterContentSearch(searchController.searchBar.text!)
         tableView.reloadData()
     }
+    
 }
