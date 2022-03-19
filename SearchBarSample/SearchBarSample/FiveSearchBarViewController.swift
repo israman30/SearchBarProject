@@ -37,7 +37,6 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
         filterArray = animals
         
         searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
 
