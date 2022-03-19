@@ -28,12 +28,12 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     // MARK: - Search Bar Generator function
-    func searchBarGenerate(){
+    private func searchBarGenerate() {
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 70))
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["Name", "Description"]
-        searchBar.tintColor = UIColor.white
-        searchBar.barTintColor = UIColor.darkGray
+        searchBar.tintColor = .white
+        searchBar.barTintColor = .darkGray
         searchBar.selectedScopeButtonIndex = 0
         
         searchBar.delegate = self
@@ -42,7 +42,6 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - Search Bar Delegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
         if searchText.isEmpty {
             tableView.reloadData()
         } else {
@@ -51,17 +50,13 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func filteringTableView(index: Int, text: String){
+    func filteringTableView(index: Int, text: String) {
         switch index {
         case selectScoope.name.rawValue:
-            teams = teams.filter({ (names: Teams) -> Bool in
-                return names.equipo.lowercased().contains(text.lowercased())
-            })
+            teams = teams.filter { $0.equipo.lowercased().contains(text.lowercased()) }
             tableView.reloadData()
         case selectScoope.descriptionTeam.rawValue:
-            teams = teams.filter({ (description:Teams) -> Bool in
-                return description.descriptionTeam.lowercased().contains(text.lowercased())
-            })
+            teams = teams.filter { $0.descriptionTeam.lowercased().contains(text.lowercased()) }
             tableView.reloadData()
         default:
             break
@@ -79,13 +74,8 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DataTableViewCell
-        
         let team = teams[indexPath.row]
-        
-        cell.equipoLbl.text = team.equipo
-        cell.descriptionTeamLbl.text = team.descriptionTeam
-        cell.imagePic.image = team.photoEquipo
-        
+        cell.configure(teams: team)
         return cell
     }
   
