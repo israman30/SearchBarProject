@@ -34,7 +34,7 @@ class SearchBarTableViewController: UITableViewController {
     }
     
     // MARK: - Creating a Search Bar function
-    func createingSearchBar() {
+    private func createingSearchBar() {
         
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Enter Text Here"
