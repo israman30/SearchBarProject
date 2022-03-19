@@ -57,7 +57,7 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = filterArray[indexPath.row].name
         cell.detailTextLabel?.text = filterArray[indexPath.row].kind
         
