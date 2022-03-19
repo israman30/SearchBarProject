@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
+class SearchBarTableViewController: UITableViewController {
     
-    let searchBar = UISearchBar()
+    private let searchBar = UISearchBar()
     
-    let itemsOnTableView = [
+    private let itemsOnTableView = [
         "Barcelona", "Real Madrid", "Manchester United",
         "Liverpool", "Bayer Munich", "Werde Bremme", "AC Milan",
         "Inter", "Benfica", "Sportin de Lisboa", "Boca Jr",
@@ -23,9 +23,9 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
         "Nacional", "Peniarol"
     ]
     
-    var filterArray = [String]()
+    private var filterArray = [String]()
     
-    var showResults = false
+    private var showResults = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,32 +34,36 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // MARK: - Creating a Search Bar function
-    func createingSearchBar(){
+    func createingSearchBar() {
         
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Enter Text Here"
         searchBar.delegate =  self
         
         searchBar.barStyle = .blackOpaque
-        navigationController?.navigationBar.barTintColor = UIColor.yellow
+        navigationController?.navigationBar.barTintColor = .yellow
         
-        self.navigationItem.titleView = searchBar
+        navigationItem.titleView = searchBar
     }
 
     // MARK: - Adding search function
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filterArray = itemsOnTableView.filter({ (names: String) -> Bool in
-            return names.lowercased().range(of: searchText.lowercased()) != nil
-        })
+        filterArray = itemsOnTableView.filter {
+            return $0.lowercased().range(of: searchText.lowercased()) != nil
+        }
         
-        if searchText != "" {
+        if !searchText.isEmpty {
             showResults = true
-            self.tableView.reloadData()
+            tableView.reloadData()
         } else {
             showResults = false
-            self.tableView.reloadData()
+            tableView.reloadData()
         }
     }
+    
+}
+
+extension SearchBarTableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,7 +71,6 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if showResults {
             return filterArray.count
         } else {
@@ -79,16 +82,16 @@ class SearchBarTableViewController: UITableViewController, UISearchBarDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         if showResults {
-            
             cell.textLabel?.text = filterArray[indexPath.row]
             return cell
-            
         } else {
-        
             cell.textLabel?.text = itemsOnTableView[indexPath.row]
             return cell
         }
     }
+    
+}
+extension SearchBarTableViewController: UISearchBarDelegate {
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
