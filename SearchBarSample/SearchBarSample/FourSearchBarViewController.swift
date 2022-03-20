@@ -13,7 +13,7 @@ enum selectScoope: Int {
     case descriptionTeam = 1
 }
 
-class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class FourSearchBarViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,9 +22,7 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
 
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchBarGenerate()
-        
     }
     
     // MARK: - Search Bar Generator function
@@ -39,6 +37,28 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
         searchBar.delegate = self
         tableView.tableHeaderView = searchBar
     }
+  
+}
+extension FourSearchBarViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // MARK: - Delegates & Data Sources
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return teams.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DataTableViewCell
+        let team = teams[indexPath.row]
+        cell.configure(teams: team)
+        return cell
+    }
+    
+}
+extension FourSearchBarViewController: UISearchBarDelegate {
     
     // MARK: - Search Bar Delegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -62,21 +82,5 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
             break
         }
     }
-
-    // MARK: - Delegates & Data Sources
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DataTableViewCell
-        let team = teams[indexPath.row]
-        cell.configure(teams: team)
-        return cell
-    }
-  
 }
