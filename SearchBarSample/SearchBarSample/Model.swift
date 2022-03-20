@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class Teams {
-    
     var equipo: String
     var descriptionTeam: String
     var photoEquipo: UIImage?

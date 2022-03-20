@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SeconSearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var tableData = [
+    private var tableData = [
             "Ecuador", "USA", "Mexico",
             "Canada", "Colombia", "Venezuela",
             "Peru", "Brasil", "Chile", "Bolivia",
@@ -25,9 +25,9 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
             "Haiti", "Bahamas", "Trinidad Tobago"
     ]
     
-    var isSearching = false
+    private var isSearching = false
     
-    var filterData = [String]()
+    private var filterData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,13 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         
         searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.done
-        searchBar.barTintColor = UIColor.black
+        searchBar.returnKeyType = .done
+        searchBar.barTintColor = .black
 
     }
-
+}
+extension SeconSearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
     // MARK - Delegates & Data Source fuctions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -55,16 +57,19 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { fatalError("Cell doesn't exist") }
         
         if isSearching {
-            cell?.textLabel?.text = filterData[indexPath.row]
-            return cell!
+            cell.textLabel?.text = filterData[indexPath.row]
+            return cell
         } else {
-            cell?.textLabel?.text = tableData[indexPath.row]
+            cell.textLabel?.text = tableData[indexPath.row]
         }
-            return cell!
+        return cell
     }
+    
+}
+extension SeconSearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
@@ -79,4 +84,5 @@ class SeconSearchViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.reloadData()
         }
     }
+    
 }

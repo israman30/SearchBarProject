@@ -24,5 +24,10 @@ class ItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure(animal: Animals) {
+        titleLbl.text = animal.name
+        subTitleLbl.text = animal.kind
+    }
 
 }

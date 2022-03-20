@@ -13,7 +13,7 @@ enum selectScoope: Int {
     case descriptionTeam = 1
 }
 
-class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class FourSearchBarViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,52 +22,25 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
 
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchBarGenerate()
-        
     }
     
     // MARK: - Search Bar Generator function
-    func searchBarGenerate(){
+    private func searchBarGenerate() {
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 70))
         searchBar.showsScopeBar = true
         searchBar.scopeButtonTitles = ["Name", "Description"]
-        searchBar.tintColor = UIColor.white
-        searchBar.barTintColor = UIColor.darkGray
+        searchBar.tintColor = .white
+        searchBar.barTintColor = .darkGray
         searchBar.selectedScopeButtonIndex = 0
         
         searchBar.delegate = self
         tableView.tableHeaderView = searchBar
     }
+  
+}
+extension FourSearchBarViewController: UITableViewDataSource, UITableViewDelegate {
     
-    // MARK: - Search Bar Delegate
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
-        if searchText.isEmpty {
-            tableView.reloadData()
-        } else {
-            filteringTableView(index: searchBar.selectedScopeButtonIndex, text: searchText)
-            tableView.reloadData()
-        }
-    }
-    
-    func filteringTableView(index: Int, text: String){
-        switch index {
-        case selectScoope.name.rawValue:
-            teams = teams.filter({ (names: Teams) -> Bool in
-                return names.equipo.lowercased().contains(text.lowercased())
-            })
-            tableView.reloadData()
-        case selectScoope.descriptionTeam.rawValue:
-            teams = teams.filter({ (description:Teams) -> Bool in
-                return description.descriptionTeam.lowercased().contains(text.lowercased())
-            })
-            tableView.reloadData()
-        default:
-            break
-        }
-    }
-
     // MARK: - Delegates & Data Sources
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -79,14 +52,35 @@ class FourSearchBarViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DataTableViewCell
-        
         let team = teams[indexPath.row]
-        
-        cell.equipoLbl.text = team.equipo
-        cell.descriptionTeamLbl.text = team.descriptionTeam
-        cell.imagePic.image = team.photoEquipo
-        
+        cell.configure(teams: team)
         return cell
     }
-  
+    
+}
+extension FourSearchBarViewController: UISearchBarDelegate {
+    
+    // MARK: - Search Bar Delegate
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            tableView.reloadData()
+        } else {
+            filteringTableView(index: searchBar.selectedScopeButtonIndex, text: searchText)
+            tableView.reloadData()
+        }
+    }
+    
+    func filteringTableView(index: Int, text: String) {
+        switch index {
+        case selectScoope.name.rawValue:
+            teams = teams.filter { $0.equipo.lowercased().contains(text.lowercased()) }
+            tableView.reloadData()
+        case selectScoope.descriptionTeam.rawValue:
+            teams = teams.filter { $0.descriptionTeam.lowercased().contains(text.lowercased()) }
+            tableView.reloadData()
+        default:
+            break
+        }
+    }
+    
 }

@@ -8,16 +8,16 @@
 
 import UIKit
 
+struct Animals {
+    var name = String()
+    var kind = String()
+}
+
 class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
     @IBOutlet weak var tableView: UITableView!
     
-    struct Animals {
-        var name = String()
-        var kind = String()
-    }
-    
-    var animals = [
+    private var animals = [
         Animals(name: "Dog", kind: "Bulldog"),
         Animals(name: "Cat", kind: "Angora"),
         Animals(name: "Mouse", kind: "White mouse"),
@@ -27,9 +27,9 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
         Animals(name: "Pig", kind: "Mini One")
     ]
     
-    var filterArray = [Animals]()
+    private var filterArray = [Animals]()
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,11 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
         filterArray = animals
         
         searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.reloadData()
         
     }
@@ -57,10 +55,9 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        cell.textLabel?.text = filterArray[indexPath.row].name
-        cell.detailTextLabel?.text = filterArray[indexPath.row].kind
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
+        let data = filterArray[indexPath.row]
+        cell.configure(animal: data)
         return cell
     }
     
@@ -69,7 +66,7 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
             filterArray = animals
             tableView.reloadData()
         } else {
-            filterArray = animals.filter({ $0.name.lowercased().contains(searchController.searchBar.text!.lowercased())})
+            filterArray = animals.filter { $0.name.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         tableView.reloadData()
     }

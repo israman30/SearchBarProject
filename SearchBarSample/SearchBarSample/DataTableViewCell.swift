@@ -10,7 +10,6 @@ import UIKit
 
 class DataTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var imagePic: UIImageView!
     
     @IBOutlet weak var equipoLbl: UILabel!
@@ -26,6 +25,12 @@ class DataTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configure(teams: Teams) {
+        imagePic.image = teams.photoEquipo
+        equipoLbl.text = teams.equipo
+        descriptionTeamLbl.text = teams.descriptionTeam
     }
 
 }
