@@ -23,18 +23,18 @@ class SearchBarTableViewController: UITableViewController {
         "Nacional", "Peniarol"
     ]
     
-    private var filterArray = [String]()
+    private var filteredArray = [String]()
     
     private var showResults = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createingSearchBar()
+        creatingSearchBar()
     }
     
     // MARK: - Creating a Search Bar function
-    private func createingSearchBar() {
+    private func creatingSearchBar() {
         
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Enter Text Here"
@@ -48,17 +48,9 @@ class SearchBarTableViewController: UITableViewController {
 
     // MARK: - Adding search function
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filterArray = itemsOnTableView.filter {
-            return $0.lowercased().range(of: searchText.lowercased()) != nil
-        }
-        
-        if !searchText.isEmpty {
-            showResults = true
-            tableView.reloadData()
-        } else {
-            showResults = false
-            tableView.reloadData()
-        }
+        filteredArray = itemsOnTableView.filter { $0.lowercased().range(of: searchText.lowercased()) != nil }
+        !searchText.isEmpty ? (showResults = true) : (showResults = false)
+        tableView.reloadData()
     }
     
 }
@@ -71,23 +63,18 @@ extension SearchBarTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if showResults {
-            return filterArray.count
-        } else {
-            return itemsOnTableView.count
-        }
+        return showResults ? filteredArray.count : itemsOnTableView.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         if showResults {
-            cell.textLabel?.text = filterArray[indexPath.row]
-            return cell
+            cell.textLabel?.text = filteredArray[indexPath.row]
         } else {
             cell.textLabel?.text = itemsOnTableView[indexPath.row]
-            return cell
         }
+        return cell
     }
     
 }
@@ -100,7 +87,7 @@ extension SearchBarTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         showResults = true
         searchBar.endEditing(true)
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
 }
