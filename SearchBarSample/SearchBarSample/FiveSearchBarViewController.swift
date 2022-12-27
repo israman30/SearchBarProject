@@ -9,8 +9,8 @@
 import UIKit
 
 struct Animals {
-    var name = String()
-    var kind = String()
+    var name: String
+    var kind: String
 }
 
 class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
@@ -27,14 +27,14 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
         Animals(name: "Pig", kind: "Mini One")
     ]
     
-    private var filterArray = [Animals]()
+    private var filteredArray = [Animals]()
     
     private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filterArray = animals
+        filteredArray = animals
         
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
@@ -51,22 +51,21 @@ class FiveSearchBarViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterArray.count
+        return filteredArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemTableViewCell
-        let data = filterArray[indexPath.row]
+        let data = filteredArray[indexPath.row]
         cell.configure(animal: data)
         return cell
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text == "" {
-            filterArray = animals
-            tableView.reloadData()
+            filteredArray = animals
         } else {
-            filterArray = animals.filter { $0.name.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            filteredArray = animals.filter { $0.name.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         tableView.reloadData()
     }
