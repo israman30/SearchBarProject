@@ -79,7 +79,7 @@ extension FourSearchBarViewController: UISearchBarDelegate {
             teams = teams.filter { $0.descriptionTeam.lowercased().contains(text.lowercased()) }
             tableView.reloadData()
         default:
-            break
+            tableView.reloadData()
         }
     }
     

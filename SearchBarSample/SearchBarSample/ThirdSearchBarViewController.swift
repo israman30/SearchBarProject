@@ -72,7 +72,7 @@ extension ThirdSearchBarViewController: UITableViewDelegate, UITableViewDataSour
 extension ThirdSearchBarViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     // MARK: - Filter function
-    func filterContentSearch(_ search: String){
+    func filterContentSearch(_ search: String) {
         filteredArray = cities.filter { $0.lowercased().range(of: search.lowercased()) != nil }
         tableView.reloadData()
     }
